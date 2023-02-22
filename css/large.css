@@ -1,0 +1,67 @@
+@media only screen and (min-width: 601px) {
+    
+
+    #five-day-forecast-sections{
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        width: 600px;
+        height: 100%;
+        position: relative;
+        padding: 2em;
+    }
+
+    #five-day-forecast-sections section {
+        display: flex;
+        flex-direction: column;
+        height: 400px;
+        width: 300px;
+        margin: 1em 8em;
+    }
+
+    .active-slide {
+        display: block;
+        position: static;
+    }
+  
+
+    .hidden-slide {
+        display: none;
+    }
+
+    .carousel-buttons {
+        display: block;
+        position: absolute;
+        top: 210px;
+        z-index: 2;
+        transform: translateY(-50%);
+        margin: .5em;
+        cursor: pointer;
+    }
+
+    #prev-button {
+        left: .5rem;
+    }
+    #next-button {
+        right: .5rem;
+    }
+
+
+    /*Maps*/
+    .maps {
+        display: inline-block
+    }
+    .maps-div {
+        padding: 0;
+        background-color: #13293d;
+    }
+
+    iframe {
+        border-radius: 15px;
+        border: none;
+        margin-top: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+
+    }
+}

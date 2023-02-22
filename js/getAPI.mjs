@@ -1,0 +1,69 @@
+//Import all Classes
+import {getLocalStorage} from "./utils.mjs";
+import WeatherSummary from "./weather_summary.mjs";
+import Forecast from "./forecast.mjs";
+import Maps from "./maps.mjs";
+import { degreeType } from "./degtype.mjs";
+import { displayElement } from "./utils.mjs";
+
+const todaySummary = document.querySelector("#today-summary");
+const fiveDayForcast = document.querySelector("#five-day-forecast");
+
+
+export default class GetAPI {
+      constructor(city) {
+      this.city = city;
+      this.latitude = getLocalStorage("lat");
+      this.longitude = getLocalStorage("lon");
+      this.degreeType = degreeType();
+    }
+
+    init() {
+      //if user used search bar and we have a city in local storage:
+        // this.city = getLocalStorage("city");
+        // this.getGeoAPI();
+      //else if user used browser and we have lat and long:
+        // this.latitude = getLocalStorage("lat");
+        // this.longitude = getLocalStorage("long");
+        this.getCurrentWeather();
+        this.getForecast();
+        this.getMaps();
+        displayElement(todaySummary);
+        displayElement(fiveDayForcast);
+    }
+  
+    // //A function that fetches the geo location of a city
+    // async getGeoAPI() {
+    //   const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.city}&appid=850f85405ab713d96880a077b3067953`);
+    //   const geoAPI = await response.json();
+    //   //USE A TRY CATCH TO HANDLE THE ERROR IF THE CITY ISN'T FOUND IN THE API
+    //   this.longitude = geoAPI.coord.lon;
+    //   this.latitude = geoAPI.coord.lat;
+      
+    // }
+  
+    //A function that creates an instance of the WeatherSummary Class
+    async getCurrentWeather() {
+      // const weatherSummary = new WeatherSummary(this.latitude, this.longitude, this.degreeType);
+      const weatherSummary = new WeatherSummary(this.latitude, this.longitude, this.degreeType);
+      weatherSummary.init();
+    }
+  
+    //A function that creates an instance of the Forecast Class
+    async getForecast() {
+      const forecast = new Forecast(this.latitude, this.longitude, this.degreeType);
+      forecast.init();
+
+      //const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${this.latitude}&lon=${this.longitude}&appid=850f85405ab713d96880a077b3067953`);
+      //this.forecastAPI = await response.json();
+    }
+
+    //A function that creates an instance of the Maps Class
+    async getMaps() {
+      const map = new Maps(this.latitude, this.longitude);
+      map.init();
+    }
+  }
+
+
+  
