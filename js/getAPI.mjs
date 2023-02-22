@@ -28,8 +28,8 @@ export default class GetAPI {
         this.getCurrentWeather();
         this.getForecast();
         this.getMaps();
-        displayElement(todaySummary);
-        displayElement(fiveDayForcast);
+        displayElement(todaySummary, "block");
+        displayElement(fiveDayForcast, "flex");
     }
   
     // //A function that fetches the geo location of a city

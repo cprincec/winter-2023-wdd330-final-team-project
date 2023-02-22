@@ -61,6 +61,6 @@ export function average(array) {
     return sum / array.length;
 }
 
-export function displayElement(element) {
-    element.style.display = "block";
+export function displayElement(element, displayStyle) {
+    element.style.display = displayStyle;
 }
